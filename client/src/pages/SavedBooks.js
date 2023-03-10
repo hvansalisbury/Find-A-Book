@@ -10,7 +10,7 @@ import { REMOVE_BOOK } from '../utils/mutations';
 
 const SavedBooks = () => {
   // const [userData, setUserData] = useState({});
-  const [ removeBookId, { error }] = useMutation(REMOVE_BOOK);
+  const [ removeBook, { error }] = useMutation(REMOVE_BOOK);
   const { loading, data } = useQuery(GET_ME);
 
   const userData = data?.me || {};
@@ -23,12 +23,12 @@ const SavedBooks = () => {
     }
 
     try {
-      const { data } = await removeBookId({
+      const { data } = await removeBook({
         variables: { bookId: bookId },
       });
 
-      const updatedUser = await data.json();
-      setUserData(updatedUser);
+      // const updatedUser = await data.json();
+      // setUserData(updatedUser);
       // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
