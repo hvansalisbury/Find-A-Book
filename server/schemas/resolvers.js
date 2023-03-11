@@ -9,6 +9,7 @@ const resolvers = {
                 const dbUserData = await User.findOne({ _id: context.user._id }).select('-__v -password');
                 return dbUserData;
             }
+            
             throw new AuthenticationError('Please log in');
         },
     },
