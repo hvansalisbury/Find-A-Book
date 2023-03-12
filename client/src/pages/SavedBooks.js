@@ -41,6 +41,10 @@ const SavedBooks = () => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
+  // create empty array so user's saved books can be stored then saved to local storage
+  let bookArray = []
+  userData.savedBooks.map((book) => {bookArray.push(book.bookId)})
+  localStorage.setItem('saved_books', JSON.stringify(bookArray));
   // returns html to render saved books
   return (
     <>

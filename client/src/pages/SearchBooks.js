@@ -5,15 +5,23 @@ import Auth from '../utils/auth';
 // imports saveBookIds and getSavedBookIds helper functions
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 // imports useMutation hook from Apollo client to modify data
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
+import { GET_ME } from '../utils/queries';
 // imports SAVE_BOOK mutation
 import { SAVE_BOOK } from '../utils/mutations';
 // function to render search books
 const SearchBooks = () => {
+  const styles = {
+    hidden: { display: 'none' }
+  }
   // define state variables for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
+
+  const { loading, data } = useQuery(GET_ME);
+  const userData = data?.me || {};
+
   // define saveBook mutation
   const [saveBook, { error }] = useMutation(SAVE_BOOK);
   // gets saved book ids from localStorage on initial render
@@ -73,6 +81,13 @@ const SearchBooks = () => {
       console.error(err);
     }
   };
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
+  let bookArray = []
+  userData.savedBooks.map((book) => { bookArray.push(book.bookId) })
+  localStorage.setItem('saved_books', JSON.stringify(bookArray));
+
   // returns the search books page html
   return (
     <>

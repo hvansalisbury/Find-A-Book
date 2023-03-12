@@ -6,7 +6,8 @@ import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
 // imports apollo client components
-import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink, useQuery } from '@apollo/client';
+import { GET_ME } from './utils/queries';
 // imports set context from apollo client link 
 import { setContext } from '@apollo/client/link/context';
 // sets up apollo client to work with graphql
@@ -34,6 +35,7 @@ const client = new ApolloClient({
 function App() {
   // returns html to render
   return (
+  
     <ApolloProvider client={client}>
       <Router>
         <>

@@ -9,10 +9,10 @@ export const getSavedBookIds = () => {
   return savedBookIds;
 };
 // export function to save book ids to local storage
-export const saveBookIds = (bookIdArr) => {
+export const saveBookIds = (bookArray) => {
   // if book id array exists, save it to local storage, otherwise remove it from local storage
-  if (bookIdArr.length) {
-    localStorage.setItem('saved_books', JSON.stringify(bookIdArr));
+  if (bookArray.length) {
+    localStorage.setItem('saved_books', JSON.stringify(bookArray));
   } else {
     localStorage.removeItem('saved_books');
   }
