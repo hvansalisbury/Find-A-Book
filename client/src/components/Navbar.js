@@ -1,15 +1,19 @@
+// import react and react hooks
 import React, { useState } from 'react';
+// import react router dom component to navigate to different pages
 import { Link } from 'react-router-dom';
+// import bootstrap components
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+// import signup and login form components
 import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
-
+// import auth helper functin
 import Auth from '../utils/auth';
-
+// navbar component
 const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
-
+  // returns html navbar
   return (
     <>
       <Navbar bg='dark' variant='dark' expand='lg'>
@@ -73,5 +77,5 @@ const AppNavbar = () => {
     </>
   );
 };
-
+// exports appnavbar
 export default AppNavbar;

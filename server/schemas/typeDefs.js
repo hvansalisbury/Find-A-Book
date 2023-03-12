@@ -1,5 +1,6 @@
+// require apollo-server-express
 const { gql } = require('apollo-server-express');
-
+// define typeDefs, book schema, user schema, auth schema, book input form field values, the getme query, and mutations for login, add user, save book, and remove book
 const typeDefs = gql`
     type Book {
         bookId: ID!
@@ -43,5 +44,5 @@ const typeDefs = gql`
         removeBook(bookId: ID!): User
     }
 `;
-
+// export typeDefs
 module.exports = typeDefs;

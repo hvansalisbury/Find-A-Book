@@ -1,40 +1,47 @@
+// imports react, react-bootstrap components, and auth helper function
 import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
-
 import Auth from '../utils/auth';
+// imports removeBookId helper function
 import { removeBookId } from '../utils/localStorage';
+// imports useQuery and useMutation hooks from Apollo client to modify data
 import { useQuery, useMutation } from '@apollo/client';
+// imports GET_ME query and REMOVE_BOOK mutations
 import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
-
+// function to render saved books
 const SavedBooks = () => {
-  const [ removeBook, { error }] = useMutation(REMOVE_BOOK);
+  // define removeBook mutation
+  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
+  // define data to be retrieved from GET_ME query
   const { loading, data } = useQuery(GET_ME);
-
+  // define userData to be retrieved from data
   const userData = data?.me || {};
-
+  // function to handle removing a saved book
   const handleRemoveBook = async (bookId) => {
+    // ternary operator to check if logged in and get token, otherwise set to null
     const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+    // if no token, return false
     if (!token) {
       return false;
     }
-
+    // try/catch to handle errors
     try {
+      // execute removeBook mutation and pass in variable data from the book's id
       const { data } = await removeBook({
         variables: { bookId: bookId },
       });
-
+      // remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
   };
-  
+  // renders loading message if data is not yet retrieved
   if (loading) {
     return <h2>Loading...</h2>;
   }
-
+  // returns html to render saved books
   return (
     <>
       <Jumbotron fluid className='text-light bg-dark'>
@@ -69,5 +76,5 @@ const SavedBooks = () => {
     </>
   );
 };
-
+// exports saved books function
 export default SavedBooks;

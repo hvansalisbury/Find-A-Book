@@ -1,5 +1,6 @@
+// requires schema from mongoose
 const { Schema } = require('mongoose');
-
+// define bookSchema
 const bookSchema = new Schema({
   authors: [
     {
@@ -25,5 +26,5 @@ const bookSchema = new Schema({
     required: true,
   },
 });
-
+// export bookSchema
 module.exports = bookSchema;
