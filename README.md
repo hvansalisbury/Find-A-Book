@@ -26,7 +26,10 @@ Go the site, create an account or login, search for books and save them to your 
 
 ## Screenshots
 
-![About Me](./images/aboutme.png)
+![Login](./images/login.png)
+![Saved Books](./images/savedbooks.png)
+![Search](./images/search.png)
+![Sign Up](./images/signup.png)
 
 ## License
 
