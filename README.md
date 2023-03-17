@@ -21,7 +21,7 @@ Go the site, create an account or login, search for books and save them to your 
 
 ## Links
 
-- [Site](https://hvansalisbury.github.io/Howards-Portfolio/)
+- [Site](https://find-a-book-8675309.herokuapp.com/)
 - [Repo](https://github.com/hvansalisbury/Find-A-Book)
 
 ## Screenshots
