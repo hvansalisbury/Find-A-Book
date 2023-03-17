@@ -84,9 +84,9 @@ const SearchBooks = () => {
   if (loading) {
     return <h2>Loading...</h2>;
   }
-  let bookArray = []
-  userData.savedBooks.map((book) => { bookArray.push(book.bookId) })
-  localStorage.setItem('saved_books', JSON.stringify(bookArray));
+  // let bookArray = []
+  // userData.savedBooks.map((book) => { bookArray.push(book.bookId) })
+  // localStorage.setItem('saved_books', JSON.stringify(bookArray));
 
   // returns the search books page html
   return (
